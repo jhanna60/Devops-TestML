@@ -14,4 +14,3 @@ Details about the code repository
 * flaskwebapp - contains the application code.
 * deploy.yaml - used while deploying on Kubernetes ACS cluster.
 * downloadblob.sh - script to download pretrained model and supporting files.
-* tutorial.md - Starting point and step by step instuctions on creating build and release definitions.
