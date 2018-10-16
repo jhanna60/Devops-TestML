@@ -1,22 +1,30 @@
-# Azure Dev Ops Machine Learning - Web App
+# Azure Machine Learning Part II - Web App  
 
-This repository contains a sample Python Flask web application and some supporting files for you to build an AI application with DevOps in mind. For an AI application, there are always two streams of work, Data Scientists building machine learning models and App developers building the application and exposing it to end users to consume and test.
+## Story  
+Cars R Us have invested in a new machine learning model to help them with pricing vehicles.
+
+They have a simple web front end and a poorly trained Linear Regression pricing algorithm which has learnt its information from some sample car data they have.
+
+The dealership could really use your help to get their web app into a Dev-Ops CI/CD pipeline, deploy their machine learning model and have the web app package itself up with the latest version of the model as currently it is cumbersome and fraught with difficulties when trying to do a release.
+
+They have also realised that their model is not quite as accurate as it could be and they are certain they are losing money hand over fist.
+
+It has also been requested a new model is trained up and deployed without adversely affecting their business.
+
+## Technology  
+Their front end is a Python Flask Web application which they wish to keep, the Machine Learning Model was developed using Azure Notebooks. For an AI application like this, there are always two streams of work, Data Scientists building machine learning models and App developers building the application and exposing it to end users to consume and test.
 
 The overall target is to build a continuous integration pipeline for an AI application. 
 
-It should look something like the following when finished:
+## Getting Started  
+* Download this Web App
+* Get it running locally (Note you will need the Machine Learning model created in Part I and test data)
 
-* The pipeline kicks off for each new commit into Github
-* Build process securely pulls the latest ML model and supporting test data from an Azure Storage account and packages that as part of the application.
-* It takes the latest build and packages it in a Docker container. 
-* The container is then deployed using Azure container service (ACS) and images are securely stored in Azure container registry (ACR). Note ACS is running Kubernetes for managing the container cluster but you can choose Docker Swarm or Mesos.
-* The deployed application has the App code and ML model packaged as single container.
+## Goal  
+Build a CI/CD pipeline that will build and combine this web app with the necessary model and test data and deploy it in a repeatable fashion. This process should decouple the web app developers and data scientists, to make sure that their production app is always running the latest code with the latest ML model.
+* Be triggered by Source code check in
+* The build process should grab the latest Model and test Data from the companys Blob storage area
+* It should then deploy to production
 
-This process decouples the app developers and data scientists, to make sure that their production app is always running the latest code with the latest ML model.
-
-A variation to this could be consuming the ML application as an endpoint instead of packaging it in the app. The goal is ultimately to show how easy it is do devops for an AI application.
-
-Details about the code repository
-* flaskwebapp - contains the application code.
-* deploy.yaml - used while deploying on Kubernetes ACS cluster.
-* downloadblob.sh - script to download pretrained model and supporting files.
+## Change Scenario  
+A variation to the existing architecture could be consuming the ML application as an endpoint instead of packaging it in the app.
